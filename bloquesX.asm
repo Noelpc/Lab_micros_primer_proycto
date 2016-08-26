@@ -1,15 +1,15 @@
 section .data
-	cons_linehor: db '  +------+ ',0xa		; Linea Horizontal
+	cons_linehor: db '    +-------------------+ ',0xa		; Linea Horizontal
 	cons_lifes:db '<3 ',0xa                             ; Corazones
 	cons_esquina:db '+ ',0xa                    
 	cons_line:db '- ',0xa                             ;linea de techo
-	cons_label:db 'Cantidad de Vidas: ',0xa                  ; letrero
-	cons_skip:db  0xa                          ;salto de linea
+	cons_label:db 'lifes: ',0xa                  ; letrero
+	cons_skip:db '', 0xa                          ;salto de linea
 	cons_space:db '   ',0xa                   ; Espacio entre bloques
 	cons_space2:db '   ',0xa                   ; Espacio entre bloques
-	cons_linever:db '  |/ / / | ',0xa                 ;Area
+	cons_linever:db '    | / / / / / / / / / | ',0xa                 ;Area
 	cons_wall:db '| ',0xa                                   ;x=4 , x=165
-	cons_nothing: db '            ',0xa	; Vacio
+	cons_nothing: db '                          ',0xa	; Vacio
 	cons_won: db '                                                                 Felicidades Ganaste                                                 ',0xa
 	cons_won_line: equ $-cons_won	
 	cons_lost: db '                                                                 Has Perdido. Mejor Suerte                                                 ',0xa
@@ -36,7 +36,7 @@ section .bss
 section .text
 	global _start		
 _start:
-	%assign bloque1 0            ; valores iniciales de booleanos
+	%assign bloque1 1            ; valores iniciales de booleanos
 	%assign bloque2 1
 	%assign bloque3 1
 	%assign bloque4 1
@@ -53,7 +53,7 @@ _start:
 	%assign bloque15 1
 	%assign bloque16 1
 	%assign bloque17 1
-	%assign bloque18 0
+	%assign bloque18 1
 	%assign vidasx 1
 vidas:
 	mov r14,vidasx              ;y ejecuccion de cantidad de vidas y letrero
@@ -62,7 +62,7 @@ vidas:
 	mov rax,1					
 	mov rdi,1					
 	mov rsi,cons_label          	
-	mov rdx,18        
+	mov rdx,6        
 	syscall
 cantidad:                          ; muestra de vidas
 	mov rax,1					
@@ -81,10 +81,15 @@ techo:                                  ; Hacer el techo
 	syscall
 	mov rax,1					
 	mov rdi,1					
+	mov rsi,cons_space2         	
+	mov rdx,3       
+	syscall
+	mov rax,1					
+	mov rdi,1					
 	mov rsi,cons_esquina          	
 	mov rdx,1        
 	syscall
-	mov r14,62
+	mov r14,159
 repeticion:
 	mov rax,1					
 	mov rdi,1					
@@ -102,8 +107,8 @@ fin_line:
 	syscall			
 	mov rax,1		
 	mov rdi,1		
-	mov rsi, cons_skip 
-	mov rdx,1 
+	mov rsi, cons_space2 
+	mov rdx,3 
 	syscall
 recrear_cajas:                 ;empezamo a crear cajas
 	mov r12,0                  ;Contador de cajas
@@ -117,6 +122,11 @@ begin_box:                        ;Definimos cantidad de hileras
 	add r13,6
 begin_line	:
 	sub r13,6
+	mov rax,1					
+	mov rdi,1					
+	mov rsi,cons_space2          	
+	mov rdx,3        
+	syscall
 	mov rax,1					
 	mov rdi,1					
 	mov rsi,cons_wall          	
@@ -260,7 +270,7 @@ loop:
 	mov rax,1					
 	mov rdi,1					
 	mov rsi,cons_linehor         
-	mov rdx,10        
+	mov rdx,26        
 	syscall
 	dec r10
 	jz line
@@ -269,7 +279,7 @@ area:
 	mov rax,1					
 	mov rdi,1					
 	mov rsi,cons_linever         
-	mov rdx,10       
+	mov rdx,26       
 	syscall
 	dec r10
 	jz line
@@ -278,7 +288,7 @@ nothing:
 	mov rax,1					
 	mov rdi,1					
 	mov rsi,cons_nothing         
-	mov rdx,10       
+	mov rdx,26       
 	syscall
 	dec r10
 	jz line
@@ -287,7 +297,7 @@ line:                             ; Se crea un espacio
 	mov rax,1					
 	mov rdi,1					
 	mov rsi,cons_space     	
-	mov rdx,2        
+	mov rdx,3        
 	syscall
 end_line:                   ; Pared y fin de linea
 	mov rax,1					
@@ -297,8 +307,8 @@ end_line:                   ; Pared y fin de linea
 	syscall			
 	mov rax,1		
 	mov rdi,1		
-	mov rsi, cons_skip  
-	mov rdx,1        
+	mov rsi, cons_space2  
+	mov rdx,3        
 	syscall
 boo:
 	dec r9

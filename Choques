@@ -1,0 +1,263 @@
+cmp r12,10
+ja _ver_bolita   ;movimiento normal
+je bloques_grandes
+cmp r12,9
+je bloques_grandes
+cmp r12,8
+je bloques_med
+cmp r12,7
+je bloques_med
+cmp r12,6
+je bloques_peq
+cmp r12,5
+je bloques_peq
+push r12
+bloques_grandes:
+cmp r13,4
+jb _ver_bolita
+cmp r13,12
+jb bloque_13
+cmp r13,14
+jb _ver_bolita
+cmp r13,22
+jb bloque_14
+cmp r13,24
+jb _ver_bolita
+cmp r13,32
+jb bloque_15
+cmp r13,34
+jb _ver_bolita
+cmp r13,42
+jb bloque_16
+cmp r13,44
+jb _ver_bolita
+cmp r13,52
+jb bloque_17
+cmp r13,54
+jb _ver_bolita
+cmp r13,62
+jb bloque_18
+jmp _ver_bolita
+bloques_med:
+cmp r13,4
+jb _ver_bolita
+cmp r13,12
+jb bloque_7
+cmp r13,14
+jb _ver_bolita
+cmp r13,22
+jb bloque_8
+cmp r13,24
+jb _ver_bolita
+cmp r13,32
+jb bloque_9
+cmp r13,34
+jb _ver_bolita
+cmp r13,42
+jb bloque_10
+cmp r13,44
+jb _ver_bolita
+cmp r13,52
+jb bloque_11
+cmp r13,54
+jb _ver_bolita
+cmp r13,62
+jb bloque_12
+jmp _ver_bolita
+bloques_peq:
+cmp r13,4
+jb _ver_bolita
+cmp r13,12
+jb bloque_1
+cmp r13,14
+jb _ver_bolita
+cmp r13,22
+jb bloque_2
+cmp r13,24
+jb _ver_bolita
+cmp r13,32
+jb bloque_3
+cmp r13,34
+jb _ver_bolita
+cmp r13,42
+jb bloque_4
+cmp r13,44
+jb _ver_bolita
+cmp r13,52
+jb bloque_5
+cmp r13,54
+jb _ver_bolita
+cmp r13,62
+jb bloque_6
+jmp _ver_bolita
+bloque_1:
+mov r12, bloque1
+jz _ver_bolita
+%assign bloque1 0
+cmp r13,4
+je _cambio_x
+cmp r13,11
+je _cambio_x
+jmp _cambio_y
+bloque_2:
+mov r12, bloque2
+jz _ver_bolita
+%assign bloque2 0
+cmp r13,14
+je _cambio_x
+cmp r13,21
+je _cambio_x
+jmp _cambio_y
+bloque_3:
+mov r12, bloque3
+jz _ver_bolita
+%assign bloque3 0
+cmp r13,24
+je _cambio_x
+cmp r13,31
+je _cambio_x
+jmp _cambio_y
+bloque_4:
+mov r12, bloque4
+jz _ver_bolita
+%assign bloque4 0
+cmp r13,34
+je _cambio_x
+cmp r13,41
+je _cambio_x
+jmp _cambio_y
+bloque_5:
+mov r12, bloque5
+jz _ver_bolita
+%assign bloque5 0
+cmp r13,44
+je _cambio_x
+cmp r13,51
+je _cambio_x
+jmp _cambio_y
+bloque_6:
+mov r12, bloque6
+jz _ver_bolita
+%assign bloque6 0
+cmp r13,54
+je _cambio_x
+cmp r13,61
+je _cambio_x
+jmp _cambio_y
+bloque_7:
+mov r12, bloque7
+jz _ver_bolita
+%assign bloque7 0
+cmp r13,4
+je _cambio_x
+cmp r13,11
+je _cambio_x
+jmp _cambio_y
+bloque_8:
+mov r12, bloque8
+jz _ver_bolita
+%assign bloque8 0
+cmp r13,14
+je _cambio_x
+cmp r13,21
+je _cambio_x
+jmp _cambio_y
+bloque_9:
+mov r12, bloque9
+jz _ver_bolita
+%assign bloque9 0
+cmp r13,24
+je _cambio_x
+cmp r13,31
+je _cambio_x
+jmp _cambio_y
+bloque_10:
+mov r12, bloque10
+jz _ver_bolita
+%assign bloque10 0
+cmp r13,34
+je _cambio_x
+cmp r13,41
+je _cambio_x
+jmp _cambio_y
+bloque_11:
+mov r12, bloque11
+jz _ver_bolita
+%assign bloque11 0
+cmp r13,44
+je _cambio_x
+cmp r13,51
+je _cambio_x
+jmp _cambio_y
+bloque_12:
+mov r12, bloque12
+jz _ver_bolita
+%assign bloque12 0
+cmp r13,54
+je _cambio_x
+cmp r13,61
+je _cambio_x
+jmp _cambio_y
+bloque_13:
+mov r12, bloque13
+jz _ver_bolita
+%assign bloque13 0
+cmp r13,4
+je _cambio_x
+cmp r13,11
+je _cambio_x
+jmp _cambio_y
+bloque_14:
+mov r12, bloque14
+jz _ver_bolita
+%assign bloque14 0
+cmp r13,14
+je _cambio_x
+cmp r13,21
+je _cambio_x
+jmp _cambio_y
+bloque_15:
+mov r12, bloque15
+jz _ver_bolita
+%assign bloque15 0
+cmp r13,24
+je _cambio_x
+cmp r13,31
+je _cambio_x
+jmp _cambio_y
+bloque_16:
+mov r12, bloque16
+jz _ver_bolita
+%assign bloque16 0
+cmp r13,34
+je _cambio_x
+cmp r13,41
+je _cambio_x
+jmp _cambio_y
+bloque_17:
+mov r12, bloque17
+jz _ver_bolita
+%assign bloque17 0
+cmp r13,44
+je _cambio_x
+cmp r13,51
+je _cambio_x
+jmp _cambio_y
+bloque_18:
+mov r12, bloque18
+jz _ver_bolita
+%assign bloque18 0
+cmp r13,54
+je _cambio_x
+cmp r13,61
+je _cambio_x
+jmp _cambio_y
+
+
+
+
+
+
+
+
+
